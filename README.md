@@ -107,14 +107,14 @@ $$\mathcal{L}_{\text{eik}} = \frac{1}{N_f} \sum_{i=1}^{N_f} \left( \|\nabla\phi\
 | Phase | Optimizer | Epochs | Learning Rate |
 |-------|-----------|--------|---------------|
 | Phase 1 | Adam | 20,000 | 1e-3 → 1e-4 (cosine annealing) |
-| Phase 2 | L-BFGS | 5,000 | Strong Wolfe line search |
+| Phase 2 | L-BFGS | 500 | Strong Wolfe line search |
 
 ### Collocation Points
 
 | Set | Size | Domain |
 |-----|------|--------|
-| PDE collocation | 80,000 | $[0,1]^2 \times [0, T]$ |
-| IC points | 40,000 | $[0,1]^2 \times \{t=0\}$ |
+| PDE collocation | 10,000 | $[0,1]^2 \times [0, T]$ |
+| IC points | 5,000 | $[0,1]^2 \times \{t=0\}$ |
 
 ---
 
@@ -137,17 +137,30 @@ pip install -r requirements.txt
 
 ## Running Experiments
 
-Each benchmark has a dedicated notebook:
+The experiments are organized in folders by benchmark and study type. Each folder contains Jupyter notebooks and a CSV file with results.
 
-```bash
-# Translation benchmark
-jupyter notebook notebooks/01_translation_benchmark.ipynb
+To run an experiment:
 
-# Rigid rotation benchmark
-jupyter notebook notebooks/02_rotation_benchmark.ipynb
+1. Navigate to the experiment folder:
+   ```bash
+   cd TR_S1_scheduler_study  # Example for Translation scheduler study
+   ```
 
-# Reversed vortex benchmark
-jupyter notebook notebooks/03_reversed_vortex_benchmark.ipynb
+2. Open the notebook:
+   ```bash
+   jupyter notebook TR_S1_exp01.ipynb
+   ```
+
+Available experiment folders:
+- `TR_S1_scheduler_study`: Translation benchmark scheduler optimization
+- `TR_S2_eikonal_study`: Translation benchmark eikonal weight study  
+- `TR_S3_collocation_study`: Translation benchmark collocation points study
+- `RO_S1_scheduler_study`: Rigid Rotation benchmark scheduler study
+- `RV_S1_epoch_study`: Reversed Vortex benchmark epoch study
+- `RV_S2_eikonal_study`: Reversed Vortex benchmark eikonal study
+- `ZD_S1_eikonal_study`: Zalesak Disk benchmark eikonal study
+- `ZD_S2_sampling_study`: Zalesak Disk benchmark sampling study
+- `ZD_S3_architecture_study`: Zalesak Disk benchmark architecture study
 
 # Zalesak disk benchmark
 jupyter notebook notebooks/04_zalesak_disk_benchmark.ipynb
