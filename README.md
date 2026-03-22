@@ -162,49 +162,77 @@ Available experiment folders:
 - `ZD_S2_sampling_study`: Zalesak Disk benchmark sampling study
 - `ZD_S3_architecture_study`: Zalesak Disk benchmark architecture study
 
-# Zalesak disk benchmark
-jupyter notebook notebooks/04_zalesak_disk_benchmark.ipynb
-```
-
----
-
-## Hardware
-
-All experiments were run on:
-
-| Component | Specification |
-|-----------|--------------|
-| GPU | NVIDIA T4 (Google Colab) |
-| RAM | 16 GB |
-| Framework | PyTorch 2.x |
-| Environment | Google Colab / Jupyter Notebook |
-
 ---
 
 ## Repository Structure
 
 ```
 pinn-level-set/
-│
-├── notebooks/
-│   ├── 01_translation_benchmark.ipynb
-│   ├── 02_rotation_benchmark.ipynb
-│   ├── 03_reversed_vortex_benchmark.ipynb
-│   └── 04_zalesak_disk_benchmark.ipynb
-│
-├── src/
-│   ├── model.py          # PINN network architecture
-│   ├── losses.py         # PDE, IC, and eikonal loss functions
-│   ├── trainer.py        # Adam + L-BFGS training loop
-│   ├── velocity.py       # Velocity field definitions per benchmark
-│   └── evaluate.py       # L2 error computation and plotting
-│
-├── results/
-│   ├── figures/          # Loss curves, phi contours, error plots
-│   └── metrics.csv       # L2 errors per benchmark per run
-│
+├── TR_S1_scheduler_study/
+│   ├── TR_S1_exp01.ipynb
+│   ├── TR_S1_exp02.ipynb
+│   ├── TR_S1_exp03.ipynb
+│   ├── TR_S1_exp04.ipynb
+│   ├── TR_S1_exp05.ipynb
+│   └── TR_S1_scheduler_study.csv
+├── TR_S2_eikonal_study/
+│   ├── TR_S2_exp02.ipynb
+│   ├── TR_S2_exp03.ipynb
+│   ├── TR_S2_exp04.ipynb
+│   ├── TR_S2_exp05.ipynb
+│   └── TR_S2_eikonal_study.csv
+├── TR_S3_collocation_study/
+│   ├── TR_S3_exp01.ipynb
+│   ├── TR_S3_exp02.ipynb
+│   ├── TR_S3_exp03.ipynb
+│   ├── TR_S3_exp04.ipynb
+│   ├── TR_S3_exp05.ipynb
+│   ├── TR_S3_exp06.ipynb
+│   └── TR_S3_collocation_study.csv
+├── RO_S1_scheduler_study/
+│   ├── RO_S1_exp02.ipynb
+│   ├── RO_S1_exp03.ipynb
+│   ├── RO_S1_exp04.ipynb
+│   └── RO_S1_scheduler_study.csv
+├── RV_S1_epoch_study/
+│   ├── RV_S1_exp01.ipynb
+│   ├── RV_S1_exp02.ipynb
+│   ├── RV_S1_exp03.ipynb
+│   ├── RV_S1_exp04.ipynb
+│   └── RV_S1_epoch_study.csv
+├── RV_S2_eikonal_study/
+│   ├── RV_S2_exp01.ipynb
+│   ├── RV_S2_exp02.ipynb
+│   ├── RV_S2_exp03.ipynb
+│   ├── RV_S2_exp04.ipynb
+│   ├── RV_S2_exp05.ipynb
+│   ├── RV_S2_exp06.ipynb
+│   └── RV_S2_eikonal_study.csv
+├── ZD_S1_eikonal_study/
+│   ├── ZD_S1_exp01.ipynb
+│   ├── ZD_S1_exp02.ipynb
+│   ├── ZD_S1_exp03.ipynb
+│   ├── ZD_S1_exp04.ipynb
+│   ├── ZD_S1_exp05.ipynb
+│   ├── ZD_S1_exp06.ipynb
+│   └── ZD_S1_eikonal_study.csv
+├── ZD_S2_sampling_study/
+│   ├── ZD_S2_exp02.ipynb
+│   ├── ZD_S2_exp03.ipynb
+│   ├── ZD_S2_exp04.ipynb
+│   └── ZD_S2_sampling_study.csv
+├── ZD_S3_architecture_study/
+│   ├── ZD_S3_exp01.ipynb
+│   ├── ZD_S3_exp02.ipynb
+│   ├── ZD_S3_exp03.ipynb
+│   ├── ZD_S3_exp04.ipynb
+│   ├── ZD_S3_exp05.ipynb
+│   ├── ZD_S3_exp06.ipynb
+│   └── ZD_S3_architecture_study.csv
 ├── requirements.txt
-└── README.md
+├── README.md
+├── LICENSE
+└── .gitignore
 ```
 
 ---
