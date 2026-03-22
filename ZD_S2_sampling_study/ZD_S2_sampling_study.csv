@@ -1,0 +1,5 @@
+exp_id,benchmark,N_f,N_i,layers,neurons,w_pde,w_ic,w_eik,adam_epochs,lbfgs_epochs,scheduler,scheduler_params,sampling,t_normalized,L2_t0,L2_tT,avg_L2,mass_t0,mass_tT,avg_mass,training_time
+ZD_S2_exp01,ZD,10000,5000,8,256,1.0,10.0,0.0001,20000,500,StepLR,step_1000_gamma_0.9,IC_5k_uniform_colloc_10k_uniform,True,1.6452e-03,7.8947e-03,5.8536e-03,2.2371e-05,7.3601e-03,4.0939e-03,16.9 minutes
+ZD_S2_exp02,ZD,10000,5000,8,256,1.0,10.0,0.0001,20000,500,StepLR,step_1000_gamma_0.9,IC_8.5k_uniform5k_bbox2k_walls1.5k_colloc_10k_uniform,True,6.6171e-04,8.8637e-03,7.1849e-03,4.2505e-04,7.8411e-03,6.3266e-03,18.7 minutes
+ZD_S2_exp03,ZD,10000,5000,8,256,1.0,10.0,0.0001,20000,500,StepLR,step_1000_gamma_0.9,IC_8.5k_uniform5k_bbox2k_walls1.5k_colloc_13k_uniform10k_slotwalls3k,True,1.3194e-03,4.3220e-03,3.0816e-03,5.0335e-04,3.1320e-03,2.5279e-03,24.1 minutes
+ZD_S2_exp04,ZD,10000,5000,8,256,1.0,10.0,0.0001,20000,500,StepLR,step_1000_gamma_0.9,IC_8.5k_uniform5k_bbox2k_walls1.5k_colloc_19k_uniform10k_slotwalls3k_bot3k_top3k_biased_t,True,1.1119e-03,3.9350e-03,2.8682e-03,2.2371e-04,1.9239e-03,1.9150e-03,34.5 minutes

@@ -36,10 +36,28 @@ Four standard test cases are implemented and evaluated against DG reference erro
 
 | Benchmark | DG Reference | PINN (This Work) |
 |-----------|-------------|------------------|
-| Translation | ~1e-04 | 🔄 Running experiments |
-| Rigid Rotation | ~1e-04 | 🔄 Running experiments |
-| Reversed Vortex | ~1.99e-04 | 🔄 Running experiments |
-| Zalesak Disk | ~1e-04 | 🔄 Running experiments |
+| Translation | ~1e-04 | 2.05e-4 |
+| Rigid Rotation | ~1e-04 | 3.40e-4 |
+| Reversed Vortex | ~1.99e-04 | 1.23e-3 |
+| Zalesak Disk | ~1e-04 | 5.74e-4 |
+
+---
+
+## Experiments
+
+The repository includes Jupyter notebooks for all experiments conducted in the study. Each benchmark has dedicated folders with notebooks and result CSV files:
+
+- **RO_S1_scheduler_study**: Scheduler optimization for Rigid Rotation benchmark
+- **RV_S1_epoch_study**: Epoch study for Reversed Vortex benchmark  
+- **RV_S2_eikonal_study**: Eikonal weight study for Reversed Vortex benchmark
+- **TR_S1_scheduler_study**: Scheduler study for Translation benchmark
+- **TR_S2_eikonal_study**: Eikonal study for Translation benchmark
+- **TR_S3_collocation_study**: Collocation points study for Translation benchmark
+- **ZD_S1_eikonal_study**: Eikonal study for Zalesak Disk benchmark
+- **ZD_S2_sampling_study**: Sampling study for Zalesak Disk benchmark
+- **ZD_S3_architecture_study**: Architecture comparison for Zalesak Disk benchmark
+
+To run the experiments, install dependencies with `pip install -r requirements.txt` and open the notebooks in Jupyter Lab.
 
 ---
 

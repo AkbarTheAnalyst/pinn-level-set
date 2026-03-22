@@ -1,0 +1,6 @@
+exp_id,benchmark,N_f,N_i,layers,neurons,w_pde,w_ic,w_eik,adam_epochs,lbfgs_epochs,scheduler,scheduler_params,sampling,t_normalized,L2_t0,L2_tT,avg_L2,mass_t0,mass_tT,avg_mass,training_time
+TR_S2_exp01,TR,10000,5000,8,256,1.0,10.0,0.0,20000,500,StepLR,step_1000_gamma_0.9,uniform,True,7.3307e-04,2.5027e-02,1.0007e-02,7.8299e-05,2.1253e-04,1.0626e-04,10.8 minutes
+TR_S2_exp02,TR,10000,5000,8,256,1.0,10.0,0.001,20000,500,StepLR,step_1000_gamma_0.9,uniform,True,7.5204e-04,1.1950e-02,5.8251e-03,8.6129e-04,9.0603e-04,7.9977e-04,11.8 minutes
+TR_S2_exp03,TR,10000,5000,8,256,1.0,10.0,0.01,20000,500,StepLR,step_1000_gamma_0.9,uniform,True,6.2843e-04,2.1139e-03,1.2104e-03,1.3423e-04,2.3490e-04,1.2863e-04,10.7 minutes
+TR_S2_exp04,TR,10000,5000,8,256,1.0,10.0,0.1,20000,500,StepLR,step_1000_gamma_0.9,uniform,True,1.8593e-04,4.4435e-04,3.1300e-04,1.0067e-04,1.4541e-04,6.7113e-05,11.0 minutes
+TR_S2_exp05,TR,10000,5000,8,256,1.0,10.0,1.0,20000,500,StepLR,step_1000_gamma_0.9,uniform,True,1.0270e-04,2.9049e-04,2.0504e-04,2.2371e-05,1.0067e-04,5.8724e-05,12.2 minutes

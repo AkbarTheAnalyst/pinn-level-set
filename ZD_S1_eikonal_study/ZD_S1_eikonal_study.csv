@@ -1,0 +1,7 @@
+exp_id,benchmark,N_f,N_i,layers,neurons,w_pde,w_ic,w_eik,adam_epochs,lbfgs_epochs,scheduler,scheduler_params,sampling,t_normalized,L2_t0,L2_tT,avg_L2,mass_t0,mass_tT,avg_mass,training_time
+ZD_S1_exp01,ZD,10000,5000,8,256,1.0,10.0,1.0,20000,500,StepLR,step_1000_gamma_0.9,uniform,True,6.9677e-04,1.4278e-02,1.1469e-02,9.3959e-04,1.0682e-02,8.8970e-03,18.3 minutes
+ZD_S1_exp02,ZD,10000,5000,8,256,1.0,10.0,0.1,20000,500,StepLR,step_1000_gamma_0.9,uniform,True,8.6117e-04,1.4225e-02,1.1560e-02,1.4429e-03,1.1488e-02,9.4898e-03,19.5 minutes
+ZD_S1_exp03,ZD,10000,5000,8,256,1.0,10.0,0.01,20000,500,StepLR,step_1000_gamma_0.9,uniform,True,7.7160e-04,1.3800e-02,1.1267e-02,8.3892e-04,1.0570e-02,8.6151e-03,18.2 minutes
+ZD_S1_exp04,ZD,10000,5000,8,256,1.0,10.0,0.001,20000,500,StepLR,step_1000_gamma_0.9,uniform,True,1.2753e-03,8.0828e-03,6.4447e-03,2.4608e-04,3.4787e-03,3.2818e-03,18.6 minutes
+ZD_S1_exp05,ZD,10000,5000,8,256,1.0,10.0,0.0001,20000,500,StepLR,step_1000_gamma_0.9,uniform,True,1.6452e-03,7.8947e-03,5.8536e-03,2.2371e-05,7.3601e-03,4.0939e-03,18.9 minutes
+ZD_S1_exp06,ZD,10000,5000,8,256,1.0,10.0,0.0,20000,500,StepLR,step_1000_gamma_0.9,uniform,True,1.2866e-03,7.9549e-03,6.1500e-03,3.4675e-04,1.7897e-04,7.5614e-04,17.7 minutes

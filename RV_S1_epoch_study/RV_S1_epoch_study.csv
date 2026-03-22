@@ -1,0 +1,5 @@
+exp_id,benchmark,N_f,N_i,layers,neurons,w_pde,w_ic,w_eik,adam_epochs,lbfgs_epochs,scheduler,scheduler_params,sampling,t_normalized,L2_t0,L2_tT,avg_L2,mass_t0,mass_tT,avg_mass,training_time
+RV_S1_exp01,RV,10000,5000,8,256,1.0,10.0,1.0,20000,500,StepLR,step_1000_gamma_0.9,uniform,True,1.3096e-03,1.5348e-01,7.7395e-02,2.3490e-04,6.9518e-02,3.4877e-02,18.1 minutes
+RV_S1_exp02,RV,10000,5000,8,256,1.0,10.0,1.0,30000,500,StepLR,step_1000_gamma_0.9,uniform,True,1.0190e-03,1.5141e-01,7.6212e-02,1.0067e-04,6.9350e-02,3.4726e-02,22.3 minutes
+RV_S1_exp03,RV,10000,5000,8,256,1.0,10.0,1.0,40000,1000,StepLR,step_1000_gamma_0.9,uniform,True,6.5818e-04,1.6097e-01,8.0812e-02,4.4742e-05,6.8914e-02,3.4479e-02,36.7 minutes
+RV_S1_exp04,RV,10000,5000,8,256,1.0,10.0,1.0,50000,1000,StepLR,step_1000_gamma_0.9,uniform,True,6.7912e-04,1.6098e-01,8.0831e-02,1.7897e-04,6.7706e-02,3.3943e-02,40.0 minutes
