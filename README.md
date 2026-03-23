@@ -168,31 +168,12 @@ Available experiment folders:
 
 ```
 pinn-level-set/
-├── TR_S1_scheduler_study/
-│   ├── TR_S1_exp01.ipynb
-│   ├── TR_S1_exp02.ipynb
-│   ├── TR_S1_exp03.ipynb
-│   ├── TR_S1_exp04.ipynb
-│   ├── TR_S1_exp05.ipynb
-│   └── TR_S1_scheduler_study.csv
-├── TR_S2_eikonal_study/
-│   ├── TR_S2_exp02.ipynb
-│   ├── TR_S2_exp03.ipynb
-│   ├── TR_S2_exp04.ipynb
-│   ├── TR_S2_exp05.ipynb
-│   └── TR_S2_eikonal_study.csv
-├── TR_S3_collocation_study/
-│   ├── TR_S3_exp01.ipynb
-│   ├── TR_S3_exp02.ipynb
-│   ├── TR_S3_exp03.ipynb
-│   ├── TR_S3_exp04.ipynb
-│   ├── TR_S3_exp05.ipynb
-│   ├── TR_S3_exp06.ipynb
-│   └── TR_S3_collocation_study.csv
 ├── RO_S1_scheduler_study/
+│   ├── RO_S1_exp01.ipynb
 │   ├── RO_S1_exp02.ipynb
 │   ├── RO_S1_exp03.ipynb
 │   ├── RO_S1_exp04.ipynb
+│   ├── RO_S1_exp05.ipynb
 │   └── RO_S1_scheduler_study.csv
 ├── RV_S1_epoch_study/
 │   ├── RV_S1_exp01.ipynb
@@ -208,6 +189,28 @@ pinn-level-set/
 │   ├── RV_S2_exp05.ipynb
 │   ├── RV_S2_exp06.ipynb
 │   └── RV_S2_eikonal_study.csv
+├── TR_S1_scheduler_study/
+│   ├── TR_S1_exp01.ipynb
+│   ├── TR_S1_exp02.ipynb
+│   ├── TR_S1_exp03.ipynb
+│   ├── TR_S1_exp04.ipynb
+│   ├── TR_S1_exp05.ipynb
+│   └── TR_S1_scheduler_study.csv
+├── TR_S2_eikonal_study/
+│   ├── TR_S2_exp01.ipynb
+│   ├── TR_S2_exp02.ipynb
+│   ├── TR_S2_exp03.ipynb
+│   ├── TR_S2_exp04.ipynb
+│   ├── TR_S2_exp05.ipynb
+│   └── TR_S2_eikonal_study.csv
+├── TR_S3_collocation_study/
+│   ├── TR_S3_exp01.ipynb
+│   ├── TR_S3_exp02.ipynb
+│   ├── TR_S3_exp03.ipynb
+│   ├── TR_S3_exp04.ipynb
+│   ├── TR_S3_exp05.ipynb
+│   ├── TR_S3_exp06.ipynb
+│   └── TR_S3_collocation_study.csv
 ├── ZD_S1_eikonal_study/
 │   ├── ZD_S1_exp01.ipynb
 │   ├── ZD_S1_exp02.ipynb
@@ -217,6 +220,7 @@ pinn-level-set/
 │   ├── ZD_S1_exp06.ipynb
 │   └── ZD_S1_eikonal_study.csv
 ├── ZD_S2_sampling_study/
+│   ├── ZD_S2_exp01.ipynb
 │   ├── ZD_S2_exp02.ipynb
 │   ├── ZD_S2_exp03.ipynb
 │   ├── ZD_S2_exp04.ipynb
@@ -231,8 +235,7 @@ pinn-level-set/
 │   └── ZD_S3_architecture_study.csv
 ├── requirements.txt
 ├── README.md
-├── LICENSE
-└── .gitignore
+└── LICENSE
 ```
 
 ---
