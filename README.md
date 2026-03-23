@@ -27,7 +27,7 @@ Four standard test cases are implemented and evaluated against DG reference erro
 
 | Benchmark | Description | Domain | Time Horizon |
 |-----------|-------------|--------|--------------|
-| **Translation** | Uniform constant velocity field | $[0,1]^2$ | $T = 1$ |
+| **Translation** | Uniform constant velocity field | $[0,1]^2$ | $T = 5$ |
 | **Rigid Rotation** | Solid-body rotation of a circle | $[0,1]^2$ | $T = 2\pi$ |
 | **Reversed Vortex** | Time-reversible swirling deformation | $[0,1]^2$ | $T = 2$ |
 | **Zalesak Disk** | Slotted disk rotation (sharp interface) | $[0,1]^2$ | $T = 2\pi$ |
