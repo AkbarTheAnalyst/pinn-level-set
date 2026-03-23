@@ -88,7 +88,7 @@ $$\mathcal{L} = w_{\text{pde}} \cdot \mathcal{L}_{\text{pde}} + w_{\text{ic}} \c
 |-----------|--------|-------------|
 | $\mathcal{L}_{\text{pde}}$ | 1.0 | Level-set PDE residual |
 | $\mathcal{L}_{\text{ic}}$ | 10.0 | Initial condition enforcement |
-| $\mathcal{L}_{\text{eik}}$ | 0.1 | Eikonal regularization |
+| $\mathcal{L}_{\text{eik}}$ | Benchmark-dependent (0.0001–1.0) | Eikonal regularization |
 
 #### PDE Loss
 
@@ -233,6 +233,7 @@ pinn-level-set/
 │   ├── ZD_S3_exp05.ipynb
 │   ├── ZD_S3_exp06.ipynb
 │   └── ZD_S3_architecture_study.csv
+├── saved_models/
 ├── requirements.txt
 ├── README.md
 └── LICENSE
