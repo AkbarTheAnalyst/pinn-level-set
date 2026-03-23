@@ -258,12 +258,27 @@ The Zalesak slotted disk is a particularly demanding benchmark due to its sharp 
 
 ## Results & Visualizations
 
-*(To be updated as experiments complete)*
+All planned benchmark studies in this thesis repository have been completed and uploaded.
 
-- Loss convergence curves (Adam + L-BFGS phases)
-- Level-set contour evolution at $t = 0, T/2, T$
-- L2 error vs DG reference comparison table
-- Zalesak disk interface shape at $t = T$
+### Final Benchmark Errors
+
+| Benchmark | DG Reference | PINN (This Work) |
+|-----------|-------------|------------------|
+| Translation | ~1e-04 | 2.05e-4 |
+| Rigid Rotation | ~1e-04 | 3.40e-4 |
+| Reversed Vortex | ~1.99e-04 | 1.23e-3 |
+| Zalesak Disk | ~1e-04 | 5.74e-4 |
+
+### Available Outputs in This Repository
+
+- Loss convergence histories (Adam and L-BFGS phases) are included in experiment notebooks.
+- Interface and contour evolution visualizations are included in benchmark notebooks.
+- Study summaries are provided in CSV files within each experiment folder.
+- Completed study folders:
+   - `TR_S1_scheduler_study`, `TR_S2_eikonal_study`, `TR_S3_collocation_study`
+   - `RO_S1_scheduler_study`
+   - `RV_S1_epoch_study`, `RV_S2_eikonal_study`
+   - `ZD_S1_eikonal_study`, `ZD_S2_sampling_study`, `ZD_S3_architecture_study`
 
 ---
 
@@ -300,7 +315,7 @@ If you use this work, please cite:
 **Muhammad Akbar Khan**
 MS Applied Mathematics, NED University of Engineering & Technology
 Research Interests: Scientific Machine Learning · PINNs · Numerical PDEs · Neural Operators
-📧 akbar.bsma1337@gmail.com · 🐙 [GitHub](https://github.com/AkbarTheAnalyst)
+akbar.bsma1337@gmail.com · [GitHub](https://github.com/AkbarTheAnalyst)
 ---
 
 *This work is part of an MS thesis conducted under supervision at NED University of Engineering & Technology, Karachi, Pakistan.*
