@@ -1,7 +1,7 @@
-exp_id,benchmark,N_f,N_i,layers,neurons,w_pde,w_ic,w_eik,adam_epochs,lbfgs_epochs,scheduler,scheduler_params,sampling,t_normalized,L2_t0,L2_tT,avg_L2,mass_t0,mass_tT,avg_mass,training_time
-TR_S3_exp01,TR,10000,5000,8,256,1.0,10.0,1.0,20000,500,StepLR,step_1000_gamma_0.9,uniform,True,1.0270e-04,2.9049e-04,2.0504e-04,2.2371e-05,1.0067e-04,5.8724e-05,12.2 minutes
-TR_S3_exp02,TR,20000,10000,8,256,1.0,10.0,1.0,20000,500,StepLR,step_1000_gamma_0.9,uniform,True,3.3051e-04,1.7110e-03,1.0378e-03,2.2371e-05,1.0067e-04,1.1745e-04,25.4 minutes
-TR_S3_exp03,TR,10000,5000,8,256,1.0,10.0,1.0,20000,500,StepLR,step_1000_gamma_0.9,Interface,True,2.9304e-04,1.4874e-03,9.0631e-04,6.7113e-05,1.4541e-04,8.9484e-05,11.3 minutes
-TR_S3_exp04,TR,10000,5000,8,256,1.0,10.0,1.0,20000,500,StepLR,step_1000_gamma_0.9,lhs,True,1.4100e-04,4.9681e-04,3.3465e-04,2.2371e-05,1.1186e-05,5.3131e-05,12.1 minutes
-TR_S3_exp05,TR,10000,5000,8,256,1.0,10.0,1.0,20000,500,StepLR,step_1000_gamma_0.9,sobol,True,4.0682e-04,2.6565e-03,1.5717e-03,1.3423e-04,3.1320e-04,2.6566e-04,11.9 minutes
-TR_S3_exp06,TR,8192,5000,8,256,1.0,10.0,1.0,20000,500,StepLR,step_1000_gamma_0.9,sobol,True,3.2919e-04,1.3737e-03,8.6803e-04,4.4742e-05,3.3557e-05,5.8724e-05,9.8 minutes
+exp_id,benchmark,N_f,N_i,layers,neurons,w_pde,w_ic,w_eik,adam_epochs,lbfgs_epochs,scheduler,scheduler_params,sampling,t_normalized,L2abs_t0,L2abs_tT4,L2abs_t3T4,L2abs_tT,avg_L2abs,L2rel(%)_t0,L2rel(%)_tT4,L2rel(%)_t3T4,L2rel(%)_tT,avg_L2rel(%),mass_t0,mass_tT4,mass_t3T4,mass_tT,avg_mass,training_time
+TR_S3_exp01,TR,10000,5000,8,256,1.0,10.0,1.0,20000,500,StepLR,step_1000_gamma_0.9,uniform,True,1.03e-04,1.56e-04,2.71e-04,2.90e-04,2.05e-04,0.03%,0.05%,0.10%,0.09%,0.07%,2.24e-05,5.59e-05,5.59e-05,1.01e-04,5.87e-05,12.2 minutes
+TR_S3_exp02,TR,20000,10000,8,256,1.0,10.0,1.0,20000,500,StepLR,step_1000_gamma_0.9,uniform,True,3.31e-04,6.94e-04,1.42e-03,1.71e-03,1.04e-03,0.09%,0.22%,0.50%,0.53%,0.34%,2.24e-05,1.23e-04,2.24e-04,1.01e-04,1.17e-04,25.4 minutes
+TR_S3_exp03,TR,10000,5000,8,256,1.0,10.0,1.0,20000,500,StepLR,step_1000_gamma_0.9,Interface,True,2.93e-04,6.01e-04,1.24e-03,1.49e-03,9.06e-04,0.08%,0.19%,0.44%,0.46%,0.29%,6.71e-05,7.83e-05,6.71e-05,1.45e-04,8.95e-05,11.3 minutes
+TR_S3_exp04,TR,10000,5000,8,256,1.0,10.0,1.0,20000,500,StepLR,step_1000_gamma_0.9,lhs,True,1.41e-04,2.40e-04,4.61e-04,4.97e-04,3.35e-04,0.04%,0.08%,0.16%,0.15%,0.11%,2.24e-05,5.59e-05,1.23e-04,1.12e-05,5.31e-05,12.1 minutes
+TR_S3_exp05,TR,10000,5000,8,256,1.0,10.0,1.0,20000,500,StepLR,step_1000_gamma_0.9,sobol,True,4.07e-04,1.02e-03,2.20e-03,2.66e-03,1.57e-03,0.11%,0.33%,0.78%,0.82%,0.51%,1.34e-04,1.12e-04,5.03e-04,3.13e-04,2.66e-04,11.9 minutes
+TR_S3_exp06,TR,8192,5000,8,256,1.0,10.0,1.0,20000,500,StepLR,step_1000_gamma_0.9,sobol,True,3.29e-04,5.92e-04,1.18e-03,1.37e-03,8.68e-04,0.09%,0.19%,0.42%,0.42%,0.28%,4.47e-05,7.83e-05,7.83e-05,3.36e-05,5.87e-05,9.8 minutes

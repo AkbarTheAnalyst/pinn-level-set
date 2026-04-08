@@ -1,6 +1,6 @@
-exp_id,benchmark,N_f,N_i,layers,neurons,w_pde,w_ic,w_eik,adam_epochs,lbfgs_epochs,scheduler,scheduler_params,sampling,t_normalized,L2_t0,L2_tT,avg_L2,mass_t0,mass_tT,avg_mass,training_time
-TR_S1_exp01,TR,10000,5000,8,256,1.0,10.0,1.0,20000,500,None,no scheduler,uniform,True,1.8608e-04,5.4481e-04,3.5759e-04,1.1186e-05,1.1186e-05,2.2371e-05,11.7 minutes
-TR_S1_exp02,TR,10000,5000,8,256,1.0,10.0,1.0,20000,500,CosineAnnealing,eta_min=1e-4,uniform,True,2.7543e-04,1.2557e-03,7.7307e-04,2.2371e-05,2.2371e-05,1.1186e-04,11.6 minutes
-TR_S1_exp03,TR,10000,5000,8,256,1.0,10.0,1.0,20000,500,CosineAnnealing,eta_min=1e-5,uniform,True,2.3658e-04,9.6955e-04,5.8487e-04,7.8299e-05,0.0000e+00,8.9484e-05,10.5 minutes
-TR_S1_exp04,TR,10000,5000,8,256,1.0,10.0,1.0,20000,500,CosineAnnealing,eta_min=1e-6,uniform,True,3.1166e-04,1.5039e-03,8.7928e-04,1.1186e-05,0.0000e+00,1.0347e-04,12.0 minutes
-TR_S1_exp05,TR,10000,5000,8,256,1.0,10.0,1.0,20000,500,StepLR,step_1000_gamma_0.9,uniform,True,1.0270e-04,2.9049e-04,2.0504e-04,2.2371e-05,1.0067e-04,5.8724e-05,13.0 minutes
+exp_id,benchmark,N_f,N_i,layers,neurons,w_pde,w_ic,w_eik,adam_epochs,lbfgs_epochs,scheduler,scheduler_params,sampling,t_normalized,L2abs_t0,L2abs_tT4,L2abs_t3T4,L2abs_tT,avg_L2abs,L2rel(%)_t0,L2rel(%)_tT4,L2rel(%)_t3T4,L2rel(%)_tT,avg_L2rel(%),mass_t0,mass_tT4,mass_t3T4,mass_tT,avg_mass,training_time
+TR_S1_exp01,TR,10000,5000,8,256,1.0,10.0,1.0,20000,500,None,no scheduler,uniform,True,1.86e-04,2.62e-04,4.37e-04,5.45e-04,3.58e-04,0.05%,0.08%,0.16%,0.17%,0.11%,1.12e-05,0.00e+00,6.71e-05,1.12e-05,2.24e-05,11.7 minutes
+TR_S1_exp02,TR,10000,5000,8,256,1.0,10.0,1.0,20000,500,CosineAnnealing,eta_min=1e-4,uniform,True,2.75e-04,5.28e-04,1.03e-03,1.26e-03,7.73e-04,0.07%,0.17%,0.37%,0.39%,0.25%,2.24e-05,1.34e-04,2.68e-04,2.24e-05,1.12e-04,11.6 minutes
+TR_S1_exp03,TR,10000,5000,8,256,1.0,10.0,1.0,20000,500,CosineAnnealing,eta_min=1e-5,uniform,True,2.37e-04,3.88e-04,7.45e-04,9.70e-04,5.85e-04,0.06%,0.12%,0.26%,0.30%,0.19%,7.83e-05,2.24e-05,2.57e-04,0.00e+00,8.95e-05,10.5 minutes
+TR_S1_exp04,TR,10000,5000,8,256,1.0,10.0,1.0,20000,500,CosineAnnealing,eta_min=1e-6,uniform,True,3.12e-04,5.52e-04,1.15e-03,1.50e-03,8.79e-04,0.08%,0.18%,0.41%,0.46%,0.28%,1.12e-05,1.79e-04,2.24e-04,0.00e+00,1.03e-04,12.0 minutes
+TR_S1_exp05,TR,10000,5000,8,256,1.0,10.0,1.0,20000,500,StepLR,step_1000_gamma_0.9,uniform,True,1.03e-04,1.56e-04,2.71e-04,2.90e-04,2.05e-04,0.03%,0.05%,0.10%,0.09%,0.07%,2.24e-05,5.59e-05,5.59e-05,1.01e-04,5.87e-05,13.0 minutes
