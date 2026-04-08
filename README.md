@@ -4,7 +4,7 @@
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.x-orange?logo=pytorch)](https://pytorch.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![MS Thesis](https://img.shields.io/badge/MS%20Thesis-NED%20University-red)](https://neduet.edu.pk)
-[![Status](https://img.shields.io/badge/Status-Active%20Research-brightgreen)]()
+[![Status](https://img.shields.io/badge/Status-Active%20Research-brightgreen)](https://github.com/AkbarTheAnalyst/pinn-level-set)
 
 > **MS Applied Mathematics Thesis** — NED University of Engineering & Technology, Karachi, Pakistan
 > Reproducing standard level-set advection benchmarks using Physics-Informed Neural Networks (PINNs), evaluated against Discontinuous Galerkin (DG) reference solutions.
@@ -32,14 +32,16 @@ Four standard test cases are implemented and evaluated against DG reference erro
 | **Reversed Vortex** | Time-reversible swirling deformation | $[0,1]^2$ | $T = 2$ |
 | **Zalesak Disk** | Slotted disk rotation (sharp interface) | $[0,1]^2$ | $T = 2\pi$ |
 
-### Target vs Achieved L2 Errors
+### Final-Time $E_{L2}(T)$ vs DG (Table 13 in manuscript)
 
 | Benchmark | DG Reference | PINN (This Work) |
 |-----------|-------------|------------------|
-| Translation | ~1e-04 | 2.05e-4 |
-| Rigid Rotation | ~1e-04 | 3.40e-4 |
-| Reversed Vortex | ~1.99e-04 | 1.23e-3 |
-| Zalesak Disk | ~1e-04 | 5.74e-4 |
+| Translation | 2.44e-4 | 2.90e-4 |
+| Rigid Rotation | 1.38e-4 | 5.92e-4 |
+| Reversed Vortex | 1.99e-4 | 1.98e-3 |
+| Zalesak Disk | 1.41e-3 | 8.90e-4 |
+
+These values use the same absolute RMS metric at final time $T$ for both DG and PINN, matching manuscript Table 13.
 
 ---
 
@@ -66,10 +68,10 @@ To run the experiments, install dependencies with `pip install -r requirements.t
 ### Network Architecture
 
 ```
-Input: (x, y, t) ∈ ℝ³
+Input: (x, y, t_norm) ∈ ℝ³
   └─► 8 × [Linear(256) → Tanh]
         └─► Linear(1)
-Output: φ(x, y, t) ∈ ℝ
+Output: φ_hat(x, y, t_norm) ∈ ℝ
 ```
 
 | Hyperparameter | Value |
@@ -78,11 +80,11 @@ Output: φ(x, y, t) ∈ ℝ
 | Neurons per layer | 256 |
 | Activation | Tanh |
 | Weight initialization | Xavier uniform |
-| Trainable parameters | ~530K |
+| Trainable parameters | 461,825 (526,593 with RFF) |
 
 ### Loss Formulation
 
-$$\mathcal{L} = w_{\text{pde}} \cdot \mathcal{L}_{\text{pde}} + w_{\text{ic}} \cdot \mathcal{L}_{\text{ic}} + w_{\text{eik}} \cdot \mathcal{L}_{\text{eik}}$$
+$$\mathcal{L} = w_{\text{pde}}\mathcal{L}_{\text{pde}} + w_{\text{ic}}\mathcal{L}_{\text{ic}} + w_{\text{eik}}\mathcal{L}_{\text{eik}}$$
 
 | Loss Term | Weight | Description |
 |-----------|--------|-------------|
@@ -92,21 +94,31 @@ $$\mathcal{L} = w_{\text{pde}} \cdot \mathcal{L}_{\text{pde}} + w_{\text{ic}} \c
 
 #### PDE Loss
 
-$$\mathcal{L}_{\text{pde}} = \frac{1}{N_f} \sum_{i=1}^{N_f} \left( \frac{\partial \phi}{\partial t} + \mathbf{u} \cdot \nabla\phi \right)^2$$
+$$\mathcal{L}_{\text{pde}} = \frac{1}{N_f} \sum_{i=1}^{N_f} \left( \partial_{t_{\text{norm}}}\hat{\phi} + T\,\mathbf{u}\cdot\nabla\hat{\phi} \right)^2$$
 
 #### Initial Condition Loss
 
-$$\mathcal{L}_{\text{ic}} = \frac{1}{N_i} \sum_{i=1}^{N_i} \left( \phi(x_i, y_i, 0) - \phi_0(x_i, y_i) \right)^2$$
+$$\mathcal{L}_{\text{ic}} = \frac{1}{N_i} \sum_{j=1}^{N_i} \left( \hat{\phi}(x_j,0) - \phi_0(x_j) \right)^2$$
 
 #### Eikonal Regularization
 
-$$\mathcal{L}_{\text{eik}} = \frac{1}{N_f} \sum_{i=1}^{N_f} \left( \|\nabla\phi\| - 1 \right)^2$$
+$$\mathcal{L}_{\text{eik}} = \frac{1}{N_f} \sum_{i=1}^{N_f} \left( |\nabla\hat{\phi}| - 1 \right)^2$$
+
+Here $t_{\text{norm}} = t/T \in [0,1]$, so the PDE residual is written in normalized time exactly as in the manuscript.
+
+### Error Metrics (as in manuscript)
+
+$$E_{L2}(t) = \sqrt{\frac{1}{N_g}\sum_{k=1}^{N_g}(\hat{\phi}_k - \phi_k^{\text{ref}})^2}$$
+
+$$E_M(t) = \left|\sum_k H(-\hat{\phi}_k) - \sum_k H(-\phi_k^{\text{ref}})\right|\,\Delta x\,\Delta y$$
+
+$$E_{L2}^{\text{rel}}(t) = \frac{\|\hat{\phi}(\cdot,t)-\phi^{\text{ref}}(\cdot,t)\|_2}{\|\phi^{\text{ref}}(\cdot,t)\|_2}, \quad \bar{E}_{L2}^{\text{rel}} = \frac{1}{N_t}\sum_{m=1}^{N_t} E_{L2}^{\text{rel}}(t_m)$$
 
 ### Training Strategy
 
 | Phase | Optimizer | Epochs | Learning Rate |
 |-------|-----------|--------|---------------|
-| Phase 1 | Adam | 20,000 | 1e-3 → 1e-4 (cosine annealing) |
+| Phase 1 | Adam | 20,000 | 1e-3 (scheduler depends on benchmark: StepLR/CosineAnnealing) |
 | Phase 2 | L-BFGS | 500 | Strong Wolfe line search |
 
 ### Collocation Points
@@ -261,14 +273,14 @@ The Zalesak slotted disk is a particularly demanding benchmark due to its sharp 
 
 All planned benchmark studies in this thesis repository have been completed and uploaded.
 
-### Final Benchmark Errors
+### Final Benchmark Errors ($E_{L2}(T)$)
 
 | Benchmark | DG Reference | PINN (This Work) |
 |-----------|-------------|------------------|
-| Translation | ~1e-04 | 2.05e-4 |
-| Rigid Rotation | ~1e-04 | 3.40e-4 |
-| Reversed Vortex | ~1.99e-04 | 1.23e-3 |
-| Zalesak Disk | ~1e-04 | 5.74e-4 |
+| Translation | 2.44e-4 | 2.90e-4 |
+| Rigid Rotation | 1.38e-4 | 5.92e-4 |
+| Reversed Vortex | 1.99e-4 | 1.98e-3 |
+| Zalesak Disk | 1.41e-3 | 8.90e-4 |
 
 ### Available Outputs in This Repository
 
