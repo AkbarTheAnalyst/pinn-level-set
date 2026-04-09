@@ -328,7 +328,7 @@ If you use this work, please cite:
 ```bibtex
 @mastersthesis{akbar2026pinn,
   author  = {Muhammad Akbar Khan},
-  title   = {A Systematic Study of Physics-Informed Neural Networks for the Level-Set Equation},
+  title   = {A Systematic Study of Physics-Informed Neural Networks for Level-Set Interface Advection},
   school  = {NED University of Engineering and Technology},
   year    = {2026},
   address = {Karachi, Pakistan}
