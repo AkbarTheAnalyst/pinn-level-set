@@ -19,6 +19,12 @@ $$\frac{\partial \phi}{\partial t} + \mathbf{u} \cdot \nabla \phi = 0, \quad (\m
 
 The goal is to reproduce benchmark L2 errors from a DG reference study using a purely data-free, mesh-free neural network approach — no labeled solution data is used during training.
 
+**Key findings from 47 experiments:**
+- The eikonal weight is the single most critical hyperparameter: reducing it from 1.0 to 10⁻⁴ yields an **82× error reduction** on the reversed vortex benchmark.
+- RFF encoding and eikonal weight are a **joint design choice**: RFF with weak eikonal performs *worse* than a plain tanh baseline.
+- For the Zalesak slotted disc, a three-study programme achieves **10× total improvement** with full attribution.
+- A standard 8-layer MLP achieves accuracy competitive with the PirateNet-based state of the art of Mullins et al. (2025) without residual adaptive architectures or Bayesian hyperparameter sweeps.
+
 ---
 
 ## Benchmarks
@@ -305,6 +311,14 @@ All planned benchmark studies in this thesis repository have been completed and 
 
 - Osher, S., & Sethian, J. A. (1988). Fronts propagating with curvature-dependent speed: Algorithms based on Hamilton-Jacobi formulations. *Journal of Computational Physics*, 79(1), 12–49.
 
+- Raees, F. (2016). *A Mass-Conserving Hybrid Interface Capturing Method for Geometrically Complicated Domains*. PhD thesis, Delft University of Technology.
+
+- Mullins, M., Kamil, H., Fahsi, A., & Soulaïmani, A. (2025). Physics-informed neural networks for solving moving interface flow problems using the level set approach. *Physics of Fluids*, 37(10), 107124.
+
+- Wang, S., Sankaran, S., & Perdikaris, P. (2024). Respecting causality for training physics-informed neural networks. *Computer Methods in Applied Mechanics and Engineering*, 421, 116813.
+
+- Tancik, M. et al. (2020). Fourier features let networks learn high frequency functions in low dimensional domains. *NeurIPS*, 33, 7537–7547.
+
 ---
 
 ## Citation
@@ -312,11 +326,11 @@ All planned benchmark studies in this thesis repository have been completed and 
 If you use this work, please cite:
 
 ```bibtex
-@mastersthesis{akbar2025pinn,
+@mastersthesis{akbar2026pinn,
   author  = {Muhammad Akbar Khan},
-  title   = {Physics-Informed Neural Networks for Level-Set Advection Benchmarks},
+  title   = {A Systematic Study of Physics-Informed Neural Networks for the Level-Set Equation},
   school  = {NED University of Engineering and Technology},
-  year    = {2025},
+  year    = {2026},
   address = {Karachi, Pakistan}
 }
 ```
