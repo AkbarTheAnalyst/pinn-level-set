@@ -32,13 +32,13 @@ The goal is to reproduce benchmark L2 errors from a DG reference study using a p
 
 <table>
 <tr>
-<td align="center" width="50%">
+<td align="center" valign="top" width="50%">
 <img src="assets/fig_RV_GA_tT2.png" width="100%"/>
 <br>
 <em>Reversed Vortex (RV) at t=T/2 (maximum interface deformation).
 Time-averaged relative L² error: 0.43%.</em>
 </td>
-<td align="center" width="50%">
+<td align="center" valign="top" width="50%">
 <img src="assets/fig_ZD_GA_tT.png" width="100%"/>
 <br>
 <em>Zalesak slotted disc (ZD) at t=T (full rotation, one complete revolution).
