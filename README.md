@@ -316,7 +316,7 @@ The Zalesak slotted disk is a particularly demanding benchmark due to its sharp 
 
 All planned benchmark studies in this thesis repository have been completed and uploaded.
 
-### Final Benchmark Errors at t = T
+### Final Benchmark Errors $E_{L2}(T)$
 
 | Benchmark | DG Reference | PINN (This Work) |
 |-----------|-------------|------------------|
