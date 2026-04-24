@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite the paper below."
+type: software
+title: "pinn-level-set: Physics-Informed Neural Networks for Level-Set Interface Advection"
+authors:
+  - family-names: Khan
+    given-names: Muhammad Akbar
+    orcid: "https://orcid.org/0009-0001-7956-0080"
+    email: akbar.bsma1337@gmail.com
+    affiliation: "NED University of Engineering and Technology"
+  - family-names: Raees
+    given-names: Fahim
+    affiliation: "NED University of Engineering and Technology"
+repository-code: "https://github.com/AkbarTheAnalyst/pinn-level-set"
+license: MIT
+preferred-citation:
+  type: article
+  title: "A Systematic Study of Physics-Informed Neural Networks for Level-Set Interface Advection"
+  authors:
+    - family-names: Khan
+      given-names: Muhammad Akbar
+      orcid: "https://orcid.org/0009-0001-7956-0080"
+    - family-names: Raees
+      given-names: Fahim
+  journal: "International Journal for Numerical Methods in Fluids"
+  year: 2026
+  notes: "Under review. Manuscript ID 4725011."
