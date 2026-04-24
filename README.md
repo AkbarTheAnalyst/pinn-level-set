@@ -316,15 +316,6 @@ The Zalesak slotted disk is a particularly demanding benchmark due to its sharp 
 
 All planned benchmark studies in this thesis repository have been completed and uploaded.
 
-### Final Benchmark Errors $E_{L2}(T)$
-
-| Benchmark | DG Reference | PINN (This Work) |
-|-----------|-------------|------------------|
-| Translation | 2.44e-4 | 2.90e-4 |
-| Rigid Rotation | 1.38e-4 | 5.92e-4 |
-| Reversed Vortex | 1.99e-4 | 1.98e-3 |
-| Zalesak Disk | 1.41e-3 | 8.90e-4 |
-
 ### Available Outputs in This Repository
 
 - Loss convergence histories (Adam and L-BFGS phases) are included in experiment notebooks.
