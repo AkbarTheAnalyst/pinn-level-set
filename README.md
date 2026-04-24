@@ -73,16 +73,16 @@ These values use the same absolute RMS metric at final time $T$ for both DG and 
 
 Table 13's absolute RMS metric aligns with the DG convention for direct comparison; the time-averaged relative $L^2$ metric below aligns with the PINN literature and enables direct comparison to Mullins et al. (2025).
 
-### Time-Averaged Relative $L^2$ Errors $\overline{\mathcal{E}}^{\,\text{rel}}_{L^2}$
+### Time-Averaged Relative $L^2$ Errors
 
-| Benchmark | $\overline{\mathcal{E}}^{\,\text{rel}}_{L^2}$ | Source |
-|-----------|----------------------------------------------|--------|
-| Translation | 0.07% | CSV† |
-| Rigid Rotation | 0.10% | CSV† |
-| Reversed Vortex | **0.43%** | Paper (Table 14) |
-| Zalesak Disk | **0.17%** | Paper (Table 14) |
+| Benchmark | Avg. rel. L² error (%) |
+|-----------|------------------------|
+| Translation | 0.07%† |
+| Rigid Rotation | 0.10%† |
+| Reversed Vortex | **0.43%** |
+| Zalesak Disk | **0.17%** |
 
-†TR and RO values are computed from `TR_S1_scheduler_study.csv` and `RO_S1_scheduler_study.csv` using the same time-averaged relative L² formula; they are not stated as headline metrics in the paper text. RV and ZD are the two benchmarks compared against Mullins et al. (2025) in Table 14 of the manuscript.
+†TR and RO values are computed from the study CSVs using the same time-averaged relative L² formula; they are not stated as headline metrics in the paper text. RV and ZD values are from manuscript Table 14 (comparison with Mullins et al. 2025).
 
 ---
 
