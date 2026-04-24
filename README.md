@@ -5,6 +5,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![MS Thesis](https://img.shields.io/badge/MS%20Thesis-NED%20University-red)](https://neduet.edu.pk)
 [![Status](https://img.shields.io/badge/Status-Active%20Research-brightgreen)](https://github.com/AkbarTheAnalyst/pinn-level-set)
+[![Paper: Under Review](https://img.shields.io/badge/Paper-Under%20Review%20%28IJNMF%2C%20MS%204725011%29-yellow)](https://github.com/AkbarTheAnalyst/pinn-level-set)
 
 > **MS Applied Mathematics Thesis** — NED University of Engineering & Technology, Karachi, Pakistan
 > Reproducing standard level-set advection benchmarks using Physics-Informed Neural Networks (PINNs), evaluated against Discontinuous Galerkin (DG) reference solutions.
@@ -24,6 +25,27 @@ The goal is to reproduce benchmark L2 errors from a DG reference study using a p
 - RFF encoding and eikonal weight are a **joint design choice**: RFF with weak eikonal performs *worse* than a plain tanh baseline.
 - For the Zalesak slotted disc, a three-study programme achieves **10× total improvement** with full attribution.
 - A standard 8-layer MLP achieves accuracy competitive with the PirateNet-based state of the art of Mullins et al. (2025) without residual adaptive architectures or Bayesian hyperparameter sweeps.
+
+---
+
+## Visual Results
+
+<table>
+<tr>
+<td align="center" width="50%">
+<img src="assets/fig_RV_GA_tT2.png" width="100%"/>
+<br>
+<em>Reversed Vortex (RV) at t=T/2 (maximum interface deformation).
+Time-averaged relative L² error: 0.43%.</em>
+</td>
+<td align="center" width="50%">
+<img src="assets/fig_ZD_GA_tT.png" width="100%"/>
+<br>
+<em>Zalesak slotted disc (ZD) at t=T (full rotation, one complete revolution).
+Time-averaged relative L² error: 0.17%.</em>
+</td>
+</tr>
+</table>
 
 ---
 
@@ -48,6 +70,19 @@ Four standard test cases are implemented and evaluated against DG reference erro
 | Zalesak Disk | 1.41e-3 | 8.90e-4 |
 
 These values use the same absolute RMS metric at final time $T$ for both DG and PINN, matching manuscript Table 13.
+
+Table 13's absolute RMS metric aligns with the DG convention for direct comparison; the time-averaged relative $L^2$ metric below aligns with the PINN literature and enables direct comparison to Mullins et al. (2025).
+
+### Time-Averaged Relative $L^2$ Errors $\overline{\mathcal{E}}^{\,\text{rel}}_{L^2}$
+
+| Benchmark | $\overline{\mathcal{E}}^{\,\text{rel}}_{L^2}$ | Source |
+|-----------|----------------------------------------------|--------|
+| Translation | 0.07% | CSV† |
+| Rigid Rotation | 0.10% | CSV† |
+| Reversed Vortex | **0.43%** | Paper (Table 14) |
+| Zalesak Disk | **0.17%** | Paper (Table 14) |
+
+†TR and RO values are computed from `TR_S1_scheduler_study.csv` and `RO_S1_scheduler_study.csv` using the same time-averaged relative L² formula; they are not stated as headline metrics in the paper text. RV and ZD are the two benchmarks compared against Mullins et al. (2025) in Table 14 of the manuscript.
 
 ---
 
@@ -251,7 +286,9 @@ pinn-level-set/
 │   ├── ZD_S3_exp05.ipynb
 │   ├── ZD_S3_exp06.ipynb
 │   └── ZD_S3_architecture_study.csv
-├── saved_models/
+├── assets/
+│   ├── fig_RV_GA_tT2.png
+│   └── fig_ZD_GA_tT.png
 ├── requirements.txt
 ├── README.md
 └── LICENSE
@@ -319,6 +356,16 @@ All planned benchmark studies in this thesis repository have been completed and 
 
 - Tancik, M. et al. (2020). Fourier features let networks learn high frequency functions in low dimensional domains. *NeurIPS*, 33, 7537–7547.
 
+- Krishnapriyan, A., Gholami, A., Zhe, S., Kirby, R., & Mahoney, M. W. (2021). Characterizing possible failure modes in physics-informed neural networks. *Advances in Neural Information Processing Systems*, 34, 26548–26560.
+
+- Wang, S., Li, B., Chen, Y., & Perdikaris, P. (2024). PirateNets: Physics-informed deep learning with residual adaptive networks. *Journal of Machine Learning Research*, 25, 1–51.
+
+- Wang, S., Yu, X., & Perdikaris, P. (2022). When and why PINNs fail to train: A neural tangent kernel perspective. *Journal of Computational Physics*, 449, 110768.
+
+- Glorot, X., & Bengio, Y. (2010). Understanding the difficulty of training deep feedforward neural networks. In *Proceedings of the 13th International Conference on Artificial Intelligence and Statistics (AISTATS)*, 9, 249–256.
+
+- Kingma, D. P., & Ba, J. (2015). Adam: A method for stochastic optimization. In *International Conference on Learning Representations (ICLR)*.
+
 ---
 
 ## Citation
@@ -326,6 +373,16 @@ All planned benchmark studies in this thesis repository have been completed and 
 If you use this work, please cite:
 
 ```bibtex
+@article{akbar2026ijnmf,
+  author  = {Muhammad Akbar Khan and Fahim Raees},
+  title   = {A Systematic Study of Physics-Informed Neural Networks
+             for Level-Set Interface Advection},
+  journal = {International Journal for Numerical Methods in Fluids},
+  year    = {2026},
+  note    = {Under review. Manuscript ID 4725011.
+             First author ORCID: 0009-0001-7956-0080}
+}
+
 @mastersthesis{akbar2026pinn,
   author  = {Muhammad Akbar Khan},
   title   = {A Systematic Study of Physics-Informed Neural Networks for Level-Set Interface Advection},
@@ -342,7 +399,11 @@ If you use this work, please cite:
 **Muhammad Akbar Khan**
 MS Applied Mathematics, NED University of Engineering & Technology
 Research Interests: Scientific Machine Learning · PINNs · Numerical PDEs · Neural Operators
-akbar.bsma1337@gmail.com · [GitHub](https://github.com/AkbarTheAnalyst)
+
+akbar.bsma1337@gmail.com · [GitHub](https://github.com/AkbarTheAnalyst) · [ORCID 0009-0001-7956-0080](https://orcid.org/0009-0001-7956-0080) · [Website](https://akbarkhan.dev) · [LinkedIn](https://linkedin.com/in/muhammad-akbar-khan-826129204)
+
+Supervisor: Dr. Fahim Raees, Associate Professor, NED University (PhD, TU Delft 2016)
+
 ---
 
 *This work is part of an MS thesis conducted under supervision at NED University of Engineering & Technology, Karachi, Pakistan.*
