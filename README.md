@@ -260,7 +260,7 @@ pinn-level-set/
 │   ├── RV_S3_exp04.ipynb
 │   ├── RV_S3_exp05.ipynb
 │   ├── RV_S3_exp06.ipynb
-│   └── RV_S3_sampling_study.csv
+│   └── RV_S3_sampling.csv
 ├── TR_S1_scheduler_study/
 │   ├── TR_S1_exp01.ipynb
 │   ├── TR_S1_exp02.ipynb
@@ -311,7 +311,7 @@ pinn-level-set/
 │   ├── ZD_S4_exp03.ipynb
 │   ├── ZD_S4_exp04.ipynb
 │   ├── ZD_S4_exp05.ipynb
-│   └── ZD_S4_component_study.csv
+│   └── ZD_S4_component.csv
 ├── assets/
 │   ├── fig_RV_GA_tT2.png
 │   └── fig_ZD_GA_tT.png
