@@ -1,14 +1,15 @@
-# Physics-Informed Neural Networks for Level-Set Advection
+# A Systematic Study of Physics-Informed Neural Networks for the Level-Set Interface Advection
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python)](https://python.org)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.x-orange?logo=pytorch)](https://pytorch.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![MS Thesis](https://img.shields.io/badge/MS%20Thesis-NED%20University-red)](https://neduet.edu.pk)
 [![Status](https://img.shields.io/badge/Status-Active%20Research-brightgreen)](https://github.com/AkbarTheAnalyst/pinn-level-set)
-[![Paper: Under Review](https://img.shields.io/badge/Paper-Under%20Review%20%28IJNMF%2C%20MS%204725011%29-yellow)](https://github.com/AkbarTheAnalyst/pinn-level-set)
+[![Paper: Under Review](https://img.shields.io/badge/Paper-Under%20Review%20%28Physics%20of%20Fluids%29-yellow)](https://github.com/AkbarTheAnalyst/pinn-level-set)
+[![Zenodo](https://img.shields.io/badge/Data-Zenodo%2010.5281%2Fzenodo.20320655-blue)](https://doi.org/10.5281/zenodo.20320655)
 
 > **MS Applied Mathematics Thesis** — NED University of Engineering & Technology, Karachi, Pakistan
-> Reproducing standard level-set advection benchmarks using Physics-Informed Neural Networks (PINNs), evaluated against Discontinuous Galerkin (DG) reference solutions.
+> A systematic ablation study of Physics-Informed Neural Networks (PINNs) for level-set advection across four benchmarks of increasing complexity, evaluated against Discontinuous Galerkin (DG) reference solutions.
 
 ---
 
@@ -20,11 +21,11 @@ $$\frac{\partial \phi}{\partial t} + \mathbf{u} \cdot \nabla \phi = 0, \quad (\m
 
 The goal is to reproduce benchmark L2 errors from a DG reference study using a purely data-free, mesh-free neural network approach — no labeled solution data is used during training.
 
-**Key findings from 47 experiments:**
-- The eikonal weight is the single most critical hyperparameter: reducing it from 1.0 to 10⁻⁴ yields an **82× error reduction** on the reversed vortex benchmark.
-- RFF encoding and eikonal weight are a **joint design choice**: RFF with weak eikonal performs *worse* than a plain tanh baseline.
-- For the Zalesak slotted disc, a three-study programme achieves **10× total improvement** with full attribution.
-- A standard 8-layer MLP achieves accuracy competitive with the PirateNet-based state of the art of Mullins et al. (2025) without residual adaptive architectures or Bayesian hyperparameter sweeps.
+**Key findings from 58 experiments:**
+- The eikonal weight is the single most critical hyperparameter: reducing it from 1.0 to 10⁻⁴ yields an **82× error reduction** on the reversed vortex benchmark (RV-S2, T=2).
+- RFF encoding and eikonal weight are a **bandwidth-dependent joint design constraint**: at low bandwidth (σ=2), weak eikonal distorts the signed-distance field and underperforms a plain tanh baseline; at higher bandwidth (σ=5), moderate regularization is compatible and yields the global best result.
+- For the Zalesak slotted disc, a **four-study programme** achieves **10× total improvement** (S3) with a further 1.24× gain in S4, with full attribution at each step.
+- A standard 8-layer MLP **outperforms** the PirateNet-based state of the art of Mullins et al. (2025) on both RV (0.63% vs 0.85%) and ZD (0.13% vs 0.14%) — without residual adaptive architectures, random weight factorization, or Bayesian hyperparameter sweeps.
 
 ---
 
@@ -36,13 +37,15 @@ The goal is to reproduce benchmark L2 errors from a DG reference study using a p
 <img src="assets/fig_RV_GA_tT2.png" width="100%"/>
 <br>
 <em>Reversed Vortex (RV) at t=T/2 (maximum interface deformation).
-Time-averaged relative L² error: 0.43%.</em>
+Time-averaged relative L² error: 0.43% (RV-S2, T=2).
+Best result: 0.63% (RV-S3, T=8, causal + RAD+RAR).</em>
 </td>
 <td align="center" valign="top" width="50%">
 <img src="assets/fig_ZD_GA_tT.png" width="100%"/>
 <br>
 <em>Zalesak slotted disc (ZD) at t=T (full rotation, one complete revolution).
-Time-averaged relative L² error: 0.17%.</em>
+Time-averaged relative L² error: 0.17% (ZD-S3, standard geometry).
+Best result: 0.13% (ZD-S4, RFF σ=5 + RAD+RAR).</em>
 </td>
 </tr>
 </table>
@@ -60,7 +63,7 @@ Four standard test cases are implemented and evaluated against DG reference erro
 | **Reversed Vortex** | Time-reversible swirling deformation | $[0,1]^2$ | $T = 2$ |
 | **Zalesak Disk** | Slotted disk rotation (sharp interface) | $[0,1]^2$ | $T = 2\pi$ |
 
-### Final-Time $E_{L2}(T)$ vs DG (Table 13 in manuscript)
+### Final-Time $E_{L2}(T)$ vs DG Reference
 
 | Benchmark | DG Reference | PINN (This Work) |
 |-----------|-------------|------------------|
@@ -69,36 +72,40 @@ Four standard test cases are implemented and evaluated against DG reference erro
 | Reversed Vortex | 1.99e-4 | 1.98e-3 |
 | Zalesak Disk | 1.41e-3 | 8.90e-4 |
 
-These values use the same absolute RMS metric at final time $T$ for both DG and PINN, matching manuscript Table 13.
+Both methods use the same absolute RMS metric evaluated at final time $T$: $\mathcal{E}_{L^2}(T) = \sqrt{\frac{1}{N_g}\sum_k (\hat{\phi}_k - \phi_k^{\text{ref}})^2}$, on a uniform 300×300 evaluation grid. DG reference values are from Raees (2016).
 
-Table 13's absolute RMS metric aligns with the DG convention for direct comparison; the time-averaged relative $L^2$ metric below aligns with the PINN literature and enables direct comparison to Mullins et al. (2025).
+The absolute $L^2$ metric at final time $T$ aligns with the DG convention for direct comparison; the time-averaged relative $L^2$ metric below aligns with the PINN literature and enables direct comparison to Mullins et al. (2025).
 
 ### Time-Averaged Relative $L^2$ Errors
 
-| Benchmark | Avg. rel. L² error (%) |
-|-----------|------------------------|
-| Translation | 0.07%† |
-| Rigid Rotation | 0.10%† |
-| Reversed Vortex | **0.43%** |
-| Zalesak Disk | **0.17%** |
+| Benchmark | Study | Avg. rel. L² error (%) | Notes |
+|-----------|-------|------------------------|-------|
+| Translation | TR-S1 best | 0.07%† | — |
+| Rigid Rotation | RO-S1 best | 0.09%† | — |
+| Reversed Vortex | RV-S2 best (T=2) | **0.43%** | Best result at standard horizon |
+| Reversed Vortex | RV-S3 best (T=8) | **0.63%** | Outperforms Mullins et al. SotA (0.85%) |
+| Zalesak Disk | ZD-S3 best | **0.17%** | Standard geometry; direct comparison to Mullins et al. (2025) |
+| Zalesak Disk | ZD-S4 best | **0.13%** | Mullins geometry; outperforms Mullins et al. SotA (0.14%) |
 
-†TR and RO values are computed from the study CSVs using the same time-averaged relative L² formula; they are not stated as headline metrics in the paper text. RV and ZD values are from manuscript Table 14 (comparison with Mullins et al. 2025).
+†TR and RO values are computed from the study CSVs using the same time-averaged relative L² formula; they are not stated as headline metrics in the paper text.
 
 ---
 
 ## Experiments
 
-The repository includes Jupyter notebooks for all experiments conducted in the study. Each benchmark has dedicated folders with notebooks and result CSV files:
+The repository includes Jupyter notebooks for all 58 experiments conducted in the study. Each benchmark has dedicated folders with notebooks and result CSV files:
 
 - **RO_S1_scheduler_study**: Scheduler optimization for Rigid Rotation benchmark
-- **RV_S1_epoch_study**: Epoch study for Reversed Vortex benchmark  
-- **RV_S2_eikonal_study**: Eikonal weight study for Reversed Vortex benchmark
+- **RV_S1_epoch_study**: Epoch study for Reversed Vortex benchmark
+- **RV_S2_eikonal_study**: Eikonal weight study for Reversed Vortex benchmark (T=2)
+- **RV_S3_sampling_study**: Causal weighting and RAD+RAR adaptive sampling study for Reversed Vortex at T=8
 - **TR_S1_scheduler_study**: Scheduler study for Translation benchmark
 - **TR_S2_eikonal_study**: Eikonal study for Translation benchmark
 - **TR_S3_collocation_study**: Collocation points study for Translation benchmark
 - **ZD_S1_eikonal_study**: Eikonal study for Zalesak Disk benchmark
-- **ZD_S2_sampling_study**: Sampling study for Zalesak Disk benchmark
-- **ZD_S3_architecture_study**: Architecture comparison for Zalesak Disk benchmark
+- **ZD_S2_sampling_study**: Trajectory-aware collocation sampling study for Zalesak Disk benchmark
+- **ZD_S3_architecture_study**: Architecture, RFF encoding, and causal weighting study for Zalesak Disk benchmark
+- **ZD_S4_component_study**: RAD+RAR adaptive sampling with RFF σ=5 and causal chunks study for Zalesak Disk benchmark
 
 To run the experiments, install dependencies with `pip install -r requirements.txt` and open the notebooks in Jupyter Lab.
 
@@ -145,9 +152,9 @@ $$\mathcal{L}_{\text{ic}} = \frac{1}{N_i} \sum_{j=1}^{N_i} \left( \hat{\phi}(x_j
 
 $$\mathcal{L}_{\text{eik}} = \frac{1}{N_f} \sum_{i=1}^{N_f} \left( |\nabla\hat{\phi}| - 1 \right)^2$$
 
-Here $t_{\text{norm}} = t/T \in [0,1]$, so the PDE residual is written in normalized time exactly as in the manuscript.
+Here $t_{\text{norm}} = t/T \in [0,1]$, so the network operates on a normalized time axis and the factor $T$ in the PDE loss arises from the chain rule of time normalization.
 
-### Error Metrics (as in manuscript)
+### Error Metrics
 
 $$E_{L2}(t) = \sqrt{\frac{1}{N_g}\sum_{k=1}^{N_g}(\hat{\phi}_k - \phi_k^{\text{ref}})^2}$$
 
@@ -186,6 +193,8 @@ Install dependencies:
 pip install -r requirements.txt
 ```
 
+Data and source code are also openly available on Zenodo: [https://doi.org/10.5281/zenodo.20320655](https://doi.org/10.5281/zenodo.20320655)
+
 ---
 
 ## Running Experiments
@@ -206,14 +215,16 @@ To run an experiment:
 
 Available experiment folders:
 - `TR_S1_scheduler_study`: Translation benchmark scheduler optimization
-- `TR_S2_eikonal_study`: Translation benchmark eikonal weight study  
+- `TR_S2_eikonal_study`: Translation benchmark eikonal weight study
 - `TR_S3_collocation_study`: Translation benchmark collocation points study
 - `RO_S1_scheduler_study`: Rigid Rotation benchmark scheduler study
 - `RV_S1_epoch_study`: Reversed Vortex benchmark epoch study
-- `RV_S2_eikonal_study`: Reversed Vortex benchmark eikonal study
+- `RV_S2_eikonal_study`: Reversed Vortex benchmark eikonal weight study (T=2)
+- `RV_S3_sampling_study`: Reversed Vortex benchmark causal weighting and RAD+RAR adaptive sampling study (T=8)
 - `ZD_S1_eikonal_study`: Zalesak Disk benchmark eikonal study
-- `ZD_S2_sampling_study`: Zalesak Disk benchmark sampling study
-- `ZD_S3_architecture_study`: Zalesak Disk benchmark architecture study
+- `ZD_S2_sampling_study`: Zalesak Disk benchmark trajectory-aware collocation sampling study
+- `ZD_S3_architecture_study`: Zalesak Disk benchmark architecture, RFF, and causal weighting study
+- `ZD_S4_component_study`: Zalesak Disk benchmark RAD+RAR adaptive sampling with RFF σ=5 study
 
 ---
 
@@ -242,6 +253,14 @@ pinn-level-set/
 │   ├── RV_S2_exp05.ipynb
 │   ├── RV_S2_exp06.ipynb
 │   └── RV_S2_eikonal_study.csv
+├── RV_S3_sampling_study/
+│   ├── RV_S3_exp01.ipynb
+│   ├── RV_S3_exp02.ipynb
+│   ├── RV_S3_exp03.ipynb
+│   ├── RV_S3_exp04.ipynb
+│   ├── RV_S3_exp05.ipynb
+│   ├── RV_S3_exp06.ipynb
+│   └── RV_S3_sampling_study.csv
 ├── TR_S1_scheduler_study/
 │   ├── TR_S1_exp01.ipynb
 │   ├── TR_S1_exp02.ipynb
@@ -286,6 +305,13 @@ pinn-level-set/
 │   ├── ZD_S3_exp05.ipynb
 │   ├── ZD_S3_exp06.ipynb
 │   └── ZD_S3_architecture_study.csv
+├── ZD_S4_component_study/
+│   ├── ZD_S4_exp01.ipynb
+│   ├── ZD_S4_exp02.ipynb
+│   ├── ZD_S4_exp03.ipynb
+│   ├── ZD_S4_exp04.ipynb
+│   ├── ZD_S4_exp05.ipynb
+│   └── ZD_S4_component_study.csv
 ├── assets/
 │   ├── fig_RV_GA_tT2.png
 │   └── fig_ZD_GA_tT.png
@@ -324,8 +350,8 @@ All planned benchmark studies in this thesis repository have been completed and 
 - Completed study folders:
    - `TR_S1_scheduler_study`, `TR_S2_eikonal_study`, `TR_S3_collocation_study`
    - `RO_S1_scheduler_study`
-   - `RV_S1_epoch_study`, `RV_S2_eikonal_study`
-   - `ZD_S1_eikonal_study`, `ZD_S2_sampling_study`, `ZD_S3_architecture_study`
+   - `RV_S1_epoch_study`, `RV_S2_eikonal_study`, `RV_S3_sampling_study`
+   - `ZD_S1_eikonal_study`, `ZD_S2_sampling_study`, `ZD_S3_architecture_study`, `ZD_S4_component_study`
 
 ---
 
@@ -364,19 +390,19 @@ All planned benchmark studies in this thesis repository have been completed and 
 If you use this work, please cite:
 
 ```bibtex
-@article{akbar2026ijnmf,
+@article{akbar2026pof,
   author  = {Muhammad Akbar Khan and Fahim Raees},
   title   = {A Systematic Study of Physics-Informed Neural Networks
-             for Level-Set Interface Advection},
-  journal = {International Journal for Numerical Methods in Fluids},
+             for the Level-Set Interface Advection},
+  journal = {Physics of Fluids},
   year    = {2026},
-  note    = {Under review. Manuscript ID 4725011.
+  note    = {Under review.
              First author ORCID: 0009-0001-7956-0080}
 }
 
 @mastersthesis{akbar2026pinn,
   author  = {Muhammad Akbar Khan},
-  title   = {A Systematic Study of Physics-Informed Neural Networks for Level-Set Interface Advection},
+  title   = {A Systematic Study of Physics-Informed Neural Networks for the Level-Set Interface Advection},
   school  = {NED University of Engineering and Technology},
   year    = {2026},
   address = {Karachi, Pakistan}
