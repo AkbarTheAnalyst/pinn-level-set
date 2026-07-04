@@ -5,7 +5,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![MS Thesis](https://img.shields.io/badge/MS%20Thesis-NED%20University-red)](https://neduet.edu.pk)
 [![Status](https://img.shields.io/badge/Status-Active%20Research-brightgreen)](https://github.com/AkbarTheAnalyst/pinn-level-set)
-[![Paper: Under Review](https://img.shields.io/badge/Paper-Under%20Review%20%28Physics%20of%20Fluids%29-yellow)](https://github.com/AkbarTheAnalyst/pinn-level-set)
+[![Paper: MLST Submission](https://img.shields.io/badge/Paper-Under%20Review%20%28MLST-105622%29-yellow)](https://github.com/AkbarTheAnalyst/pinn-level-set)
 [![Zenodo](https://img.shields.io/badge/Data-Zenodo%2010.5281%2Fzenodo.20320655-blue)](https://doi.org/10.5281/zenodo.20320655)
 
 > **MS Applied Mathematics Thesis** — NED University of Engineering & Technology, Karachi, Pakistan
@@ -38,6 +38,13 @@ The goal is to reproduce benchmark L2 errors from a DG reference study using a p
 <br>
 <em>Reversed Vortex (RV) at t=T/2 (maximum interface deformation).
 Time-averaged relative L² error: 0.43% (RV-S2, T=2).
+Best result: 0.63% (RV-S3, T=8, causal + RAD+RAR).</em>
+</td>
+<td align="center" valign="top" width="50%">
+<img src="assets/fig_RV_GA_tT8.png" width="100%"/>
+<br>
+<em>Reversed Vortex (RV) at T=8 (extended training-strategy horizon).
+Time-averaged relative L² error: 0.63% (RV-S3, T=8, causal + RAD+RAR).
 Best result: 0.63% (RV-S3, T=8, causal + RAD+RAR).</em>
 </td>
 <td align="center" valign="top" width="50%">
@@ -95,17 +102,19 @@ The absolute $L^2$ metric at final time $T$ aligns with the DG convention for di
 
 The repository includes Jupyter notebooks for all 58 experiments conducted in the study. Each benchmark has dedicated folders with notebooks and result CSV files:
 
-- **RO_S1_scheduler_study**: Scheduler optimization for Rigid Rotation benchmark
-- **RV_S1_epoch_study**: Epoch study for Reversed Vortex benchmark
-- **RV_S2_eikonal_study**: Eikonal weight study for Reversed Vortex benchmark (T=2)
-- **RV_S3_sampling_study**: Causal weighting and RAD+RAR adaptive sampling study for Reversed Vortex at T=8
-- **TR_S1_scheduler_study**: Scheduler study for Translation benchmark
-- **TR_S2_eikonal_study**: Eikonal study for Translation benchmark
-- **TR_S3_collocation_study**: Collocation points study for Translation benchmark
-- **ZD_S1_eikonal_study**: Eikonal study for Zalesak Disk benchmark
-- **ZD_S2_sampling_study**: Trajectory-aware collocation sampling study for Zalesak Disk benchmark
-- **ZD_S3_architecture_study**: Architecture, RFF encoding, and causal weighting study for Zalesak Disk benchmark
-- **ZD_S4_component_study**: RAD+RAR adaptive sampling with RFF σ=5 and causal chunks study for Zalesak Disk benchmark
+- **RO_S1_Learning_Rate_Scheduler_Study**: Learning-rate scheduler study for Rigid Rotation benchmark
+- **RO_S2_Eikonal_Weight_Study**: Eikonal weight study for Rigid Rotation benchmark
+- **RO_S3_Collocation_Sampling_Study**: Collocation sampling study for Rigid Rotation benchmark
+- **RV_S1_Epoch_Study**: Epoch study for Reversed Vortex benchmark
+- **RV_S2_Eikonal_Weight_Study**: Eikonal weight study for Reversed Vortex benchmark (T=2)
+- **RV_S3_Training_Strategy_Study**: Training strategy study for Reversed Vortex benchmark (T=8)
+- **TR_S1_Learning_Rate_Scheduler_Study**: Learning-rate scheduler study for Translation benchmark
+- **TR_S2_Eikonal_Weight_Study**: Eikonal weight study for Translation benchmark
+- **TR_S3_Collocation_Sampling_Study**: Collocation sampling study for Translation benchmark
+- **ZD_S1_Eikonal_Weight_Study**: Eikonal weight study for Zalesak Disk benchmark
+- **ZD_S2_Progressive_Sampling_Study**: Progressive sampling study for Zalesak Disk benchmark
+- **ZD_S3_Architecture_Study**: Architecture study, RFF encoding, and causal weighting study for Zalesak Disk benchmark
+- **ZD_S4_Adaptive_Sampling_Study**: Adaptive sampling with RFF σ=5 and causal chunks study for Zalesak Disk benchmark
 
 To run the experiments, install dependencies with `pip install -r requirements.txt` and open the notebooks in Jupyter Lab.
 
@@ -205,7 +214,7 @@ To run an experiment:
 
 1. Navigate to the experiment folder:
    ```bash
-   cd TR_S1_scheduler_study  # Example for Translation scheduler study
+   cd TR_S1_Learning_Rate_Scheduler_Study  # Example for Translation scheduler study
    ```
 
 2. Open the notebook:
@@ -214,17 +223,19 @@ To run an experiment:
    ```
 
 Available experiment folders:
-- `TR_S1_scheduler_study`: Translation benchmark scheduler optimization
-- `TR_S2_eikonal_study`: Translation benchmark eikonal weight study
-- `TR_S3_collocation_study`: Translation benchmark collocation points study
-- `RO_S1_scheduler_study`: Rigid Rotation benchmark scheduler study
-- `RV_S1_epoch_study`: Reversed Vortex benchmark epoch study
-- `RV_S2_eikonal_study`: Reversed Vortex benchmark eikonal weight study (T=2)
-- `RV_S3_sampling_study`: Reversed Vortex benchmark causal weighting and RAD+RAR adaptive sampling study (T=8)
-- `ZD_S1_eikonal_study`: Zalesak Disk benchmark eikonal study
-- `ZD_S2_sampling_study`: Zalesak Disk benchmark trajectory-aware collocation sampling study
-- `ZD_S3_architecture_study`: Zalesak Disk benchmark architecture, RFF, and causal weighting study
-- `ZD_S4_component_study`: Zalesak Disk benchmark RAD+RAR adaptive sampling with RFF σ=5 study
+- `TR_S1_Learning_Rate_Scheduler_Study`: Translation benchmark learning-rate scheduler study
+- `TR_S2_Eikonal_Weight_Study`: Translation benchmark eikonal weight study
+- `TR_S3_Collocation_Sampling_Study`: Translation benchmark collocation sampling study
+- `RO_S1_Learning_Rate_Scheduler_Study`: Rigid Rotation benchmark learning-rate scheduler study
+- `RO_S2_Eikonal_Weight_Study`: Rigid Rotation benchmark eikonal weight study
+- `RO_S3_Collocation_Sampling_Study`: Rigid Rotation benchmark collocation sampling study
+- `RV_S1_Epoch_Study`: Reversed Vortex benchmark epoch study
+- `RV_S2_Eikonal_Weight_Study`: Reversed Vortex benchmark eikonal weight study (T=2)
+- `RV_S3_Training_Strategy_Study`: Reversed Vortex benchmark training strategy study (T=8)
+- `ZD_S1_Eikonal_Weight_Study`: Zalesak Disk benchmark eikonal weight study
+- `ZD_S2_Progressive_Sampling_Study`: Zalesak Disk benchmark progressive sampling study
+- `ZD_S3_Architecture_Study`: Zalesak Disk benchmark architecture, RFF, and causal weighting study
+- `ZD_S4_Adaptive_Sampling_Study`: Zalesak Disk benchmark adaptive sampling with RFF σ=5 study
 
 ---
 
@@ -232,88 +243,103 @@ Available experiment folders:
 
 ```
 pinn-level-set/
-├── RO_S1_scheduler_study/
+├── RO_S1_Learning_Rate_Scheduler_Study/
 │   ├── RO_S1_exp01.ipynb
 │   ├── RO_S1_exp02.ipynb
 │   ├── RO_S1_exp03.ipynb
 │   ├── RO_S1_exp04.ipynb
 │   ├── RO_S1_exp05.ipynb
-│   └── RO_S1_scheduler_study.csv
-├── RV_S1_epoch_study/
+│   └── RO_S1_Learning_Rate_Scheduler_Study.csv
+├── RO_S2_Eikonal_Weight_Study/
+│   ├── RO_S2_exp01.ipynb
+│   ├── RO_S2_exp02.ipynb
+│   ├── RO_S2_exp03.ipynb
+│   ├── RO_S2_exp04.ipynb
+│   ├── RO_S2_exp05.ipynb
+│   └── RO_S2_Eikonal_Weight_Study.csv
+├── RO_S3_Collocation_Sampling_Study/
+│   ├── RO_S3_exp01.ipynb
+│   ├── RO_S3_exp02.ipynb
+│   ├── RO_S3_exp03.ipynb
+│   ├── RO_S3_exp04.ipynb
+│   ├── RO_S3_exp05.ipynb
+│   └── RO_S3_Collocation_Sampling_Study.csv
+├── RV_S1_Epoch_Study/
 │   ├── RV_S1_exp01.ipynb
 │   ├── RV_S1_exp02.ipynb
 │   ├── RV_S1_exp03.ipynb
 │   ├── RV_S1_exp04.ipynb
-│   └── RV_S1_epoch_study.csv
-├── RV_S2_eikonal_study/
+│   └── RV_S1_Epoch_Study.csv
+├── RV_S2_Eikonal_Weight_Study/
 │   ├── RV_S2_exp01.ipynb
 │   ├── RV_S2_exp02.ipynb
 │   ├── RV_S2_exp03.ipynb
 │   ├── RV_S2_exp04.ipynb
 │   ├── RV_S2_exp05.ipynb
 │   ├── RV_S2_exp06.ipynb
-│   └── RV_S2_eikonal_study.csv
-├── RV_S3_sampling_study/
+│   └── RV_S2_Eikonal_Weight_Study.csv
+├── RV_S3_Training_Strategy_Study/
 │   ├── RV_S3_exp01.ipynb
 │   ├── RV_S3_exp02.ipynb
 │   ├── RV_S3_exp03.ipynb
 │   ├── RV_S3_exp04.ipynb
 │   ├── RV_S3_exp05.ipynb
 │   ├── RV_S3_exp06.ipynb
-│   └── RV_S3_sampling.csv
-├── TR_S1_scheduler_study/
+│   └── RV_S3_Training_Strategy_Study.csv
+├── TR_S1_Learning_Rate_Scheduler_Study/
 │   ├── TR_S1_exp01.ipynb
 │   ├── TR_S1_exp02.ipynb
 │   ├── TR_S1_exp03.ipynb
 │   ├── TR_S1_exp04.ipynb
 │   ├── TR_S1_exp05.ipynb
-│   └── TR_S1_scheduler_study.csv
-├── TR_S2_eikonal_study/
+│   └── TR_S1_Learning_Rate_Scheduler_Study.csv
+├── TR_S2_Eikonal_Weight_Study/
 │   ├── TR_S2_exp01.ipynb
 │   ├── TR_S2_exp02.ipynb
 │   ├── TR_S2_exp03.ipynb
 │   ├── TR_S2_exp04.ipynb
 │   ├── TR_S2_exp05.ipynb
-│   └── TR_S2_eikonal_study.csv
-├── TR_S3_collocation_study/
+│   └── TR_S2_Eikonal_Weight_Study.csv
+├── TR_S3_Collocation_Sampling_Study/
 │   ├── TR_S3_exp01.ipynb
 │   ├── TR_S3_exp02.ipynb
 │   ├── TR_S3_exp03.ipynb
 │   ├── TR_S3_exp04.ipynb
 │   ├── TR_S3_exp05.ipynb
 │   ├── TR_S3_exp06.ipynb
-│   └── TR_S3_collocation_study.csv
-├── ZD_S1_eikonal_study/
+│   └── TR_S3_Collocation_Sampling_Study.csv
+├── ZD_S1_Eikonal_Weight_Study/
 │   ├── ZD_S1_exp01.ipynb
 │   ├── ZD_S1_exp02.ipynb
 │   ├── ZD_S1_exp03.ipynb
 │   ├── ZD_S1_exp04.ipynb
 │   ├── ZD_S1_exp05.ipynb
 │   ├── ZD_S1_exp06.ipynb
-│   └── ZD_S1_eikonal_study.csv
-├── ZD_S2_sampling_study/
+│   └── ZD_S1_Eikonal_Weight_Study.csv
+├── ZD_S2_Progressive_Sampling_Study/
 │   ├── ZD_S2_exp01.ipynb
 │   ├── ZD_S2_exp02.ipynb
 │   ├── ZD_S2_exp03.ipynb
 │   ├── ZD_S2_exp04.ipynb
-│   └── ZD_S2_sampling_study.csv
-├── ZD_S3_architecture_study/
+│   └── ZD_S2_Progressive_Sampling_Study.csv
+├── ZD_S3_Architecture_Study/
 │   ├── ZD_S3_exp01.ipynb
 │   ├── ZD_S3_exp02.ipynb
 │   ├── ZD_S3_exp03.ipynb
 │   ├── ZD_S3_exp04.ipynb
 │   ├── ZD_S3_exp05.ipynb
 │   ├── ZD_S3_exp06.ipynb
-│   └── ZD_S3_architecture_study.csv
-├── ZD_S4_component_study/
+│   └── ZD_S3_Architecture_Study.csv
+├── ZD_S4_Adaptive_Sampling_Study/
 │   ├── ZD_S4_exp01.ipynb
 │   ├── ZD_S4_exp02.ipynb
 │   ├── ZD_S4_exp03.ipynb
 │   ├── ZD_S4_exp04.ipynb
 │   ├── ZD_S4_exp05.ipynb
-│   └── ZD_S4_component.csv
+│   └── ZD_S4_Adaptive_Sampling_Study.csv
 ├── assets/
 │   ├── fig_RV_GA_tT2.png
+│   ├── fig_RV_GA_tT8.png
 │   └── fig_ZD_GA_tT.png
 ├── requirements.txt
 ├── README.md
@@ -348,10 +374,10 @@ All planned benchmark studies in this thesis repository have been completed and 
 - Interface and contour evolution visualizations are included in benchmark notebooks.
 - Study summaries are provided in CSV files within each experiment folder.
 - Completed study folders:
-   - `TR_S1_scheduler_study`, `TR_S2_eikonal_study`, `TR_S3_collocation_study`
-   - `RO_S1_scheduler_study`
-   - `RV_S1_epoch_study`, `RV_S2_eikonal_study`, `RV_S3_sampling_study`
-   - `ZD_S1_eikonal_study`, `ZD_S2_sampling_study`, `ZD_S3_architecture_study`, `ZD_S4_component_study`
+   - `TR_S1_Learning_Rate_Scheduler_Study`, `TR_S2_Eikonal_Weight_Study`, `TR_S3_Collocation_Sampling_Study`
+   - `RO_S1_Learning_Rate_Scheduler_Study`, `RO_S2_Eikonal_Weight_Study`, `RO_S3_Collocation_Sampling_Study`
+   - `RV_S1_Epoch_Study`, `RV_S2_Eikonal_Weight_Study`, `RV_S3_Training_Strategy_Study`
+   - `ZD_S1_Eikonal_Weight_Study`, `ZD_S2_Progressive_Sampling_Study`, `ZD_S3_Architecture_Study`, `ZD_S4_Adaptive_Sampling_Study`
 
 ---
 
@@ -394,10 +420,10 @@ If you use this work, please cite:
   author  = {Muhammad Akbar Khan and Fahim Raees},
   title   = {A Systematic Study of Physics-Informed Neural Networks
              for the Level-Set Interface Advection},
-  journal = {Physics of Fluids},
+   journal = {Machine Learning: Science and Technology},
   year    = {2026},
-  note    = {Under review.
-             First author ORCID: 0009-0001-7956-0080}
+   note    = {Under review. Manuscript ID: MLST-105622.
+                   First author ORCID: 0009-0001-7956-0080}
 }
 
 @mastersthesis{akbar2026pinn,
