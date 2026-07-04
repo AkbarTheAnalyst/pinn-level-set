@@ -47,7 +47,9 @@ Best result: 0.63% (RV-S3, T=8, causal + RAD+RAR).</em>
 Time-averaged relative L² error: 0.63% (RV-S3, T=8, causal + RAD+RAR).
 Best result: 0.63% (RV-S3, T=8, causal + RAD+RAR).</em>
 </td>
-<td align="center" valign="top" width="50%">
+ </tr>
+ <tr>
+<td align="center" colspan="2" valign="top" width="100%">
 <img src="assets/fig_ZD_GA_tT.png" width="100%"/>
 <br>
 <em>Zalesak slotted disc (ZD) at t=T (full rotation, one complete revolution).
@@ -416,12 +418,12 @@ All planned benchmark studies in this thesis repository have been completed and 
 If you use this work, please cite:
 
 ```bibtex
-@article{akbar2026pof,
-  author  = {Muhammad Akbar Khan and Fahim Raees},
-  title   = {A Systematic Study of Physics-Informed Neural Networks
-             for the Level-Set Interface Advection},
+@article{akbar2026mlst,
+   author  = {Muhammad Akbar Khan and Fahim Raees},
+   title   = {A Systematic Study of Physics-Informed Neural Networks
+                   for the Level-Set Interface Advection},
    journal = {Machine Learning: Science and Technology},
-  year    = {2026},
+   year    = {2026},
    note    = {Under review. Manuscript ID: MLST-105622.
                    First author ORCID: 0009-0001-7956-0080}
 }
