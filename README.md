@@ -4,8 +4,8 @@
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.x-orange?logo=pytorch)](https://pytorch.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![MS Thesis](https://img.shields.io/badge/MS%20Thesis-NED%20University-red)](https://neduet.edu.pk)
-[![Status](https://img.shields.io/badge/Status-Active%20Research-brightgreen)](https://github.com/AkbarTheAnalyst/pinn-level-set)
-[![Paper: MLST Submission](https://img.shields.io/badge/Paper-Under%20Review%20%28MLST-105622%29-yellow)](https://github.com/AkbarTheAnalyst/pinn-level-set)
+[![Status](https://img.shields.io/badge/Status-Published-brightgreen)](https://doi.org/10.1088/2632-2153/ae8b74)
+[![Paper: MLST Published](https://img.shields.io/badge/Paper-Published%20MLST%202026-brightgreen)](https://doi.org/10.1088/2632-2153/ae8b74)
 [![Zenodo](https://img.shields.io/badge/Data-Zenodo%2010.5281%2Fzenodo.20320655-blue)](https://doi.org/10.5281/zenodo.20320655)
 
 > **MS Applied Mathematics Thesis** — NED University of Engineering & Technology, Karachi, Pakistan
@@ -21,7 +21,7 @@ $$\frac{\partial \phi}{\partial t} + \mathbf{u} \cdot \nabla \phi = 0, \quad (\m
 
 The goal is to reproduce benchmark L2 errors from a DG reference study using a purely data-free, mesh-free neural network approach — no labeled solution data is used during training.
 
-**Key findings from 58 experiments:**
+**Key findings from 69 experiments:**
 - The eikonal weight is the single most critical hyperparameter: reducing it from 1.0 to 10⁻⁴ yields an **82× error reduction** on the reversed vortex benchmark (RV-S2, T=2).
 - RFF encoding and eikonal weight are a **bandwidth-dependent joint design constraint**: at low bandwidth (σ=2), weak eikonal distorts the signed-distance field and underperforms a plain tanh baseline; at higher bandwidth (σ=5), moderate regularization is compatible and yields the global best result.
 - For the Zalesak slotted disc, a **four-study programme** achieves **10× total improvement** (S3) with a further 1.24× gain in S4, with full attribution at each step.
@@ -49,12 +49,19 @@ Best result: 0.63% (RV-S3, T=8, causal + RAD+RAR).</em>
 </td>
  </tr>
  <tr>
-<td align="center" colspan="2" valign="top" width="100%">
-<img src="assets/fig_ZD_GA_tT.png" width="100%"/>
+<td align="center" valign="top" width="50%">
+<img src="assets/fig_ZD_S3_GA_tT.png" width="100%"/>
 <br>
-<em>Zalesak slotted disc (ZD) at t=T (full rotation, one complete revolution).
-Time-averaged relative L² error: 0.17% (ZD-S3, standard geometry).
-Best result: 0.13% (ZD-S4, RFF σ=5 + RAD+RAR).</em>
+<em>Zalesak slotted disc (ZD) at t=T (ZD-S3, standard geometry).
+Time-averaged relative L² error: 0.17%.
+RFF σ=2, causal weighting, full slot sampling.</em>
+</td>
+<td align="center" valign="top" width="50%">
+<img src="assets/fig_ZD_S4_GA_tT.png" width="100%"/>
+<br>
+<em>Zalesak slotted disc (ZD) at t=T (ZD-S4, Mullins geometry).
+Time-averaged relative L² error: 0.13% — global best result.
+RFF σ=5 + RAD+RAR, M=32 causal chunks.</em>
 </td>
 </tr>
 </table>
@@ -102,7 +109,7 @@ The absolute $L^2$ metric at final time $T$ aligns with the DG convention for di
 
 ## Experiments
 
-The repository includes Jupyter notebooks for all 58 experiments conducted in the study. Each benchmark has dedicated folders with notebooks and result CSV files:
+The repository includes Jupyter notebooks for all 69 experiments conducted in the study. Each benchmark has dedicated folders with notebooks and result CSV files:
 
 - **RO_S1_Learning_Rate_Scheduler_Study**: Learning-rate scheduler study for Rigid Rotation benchmark
 - **RO_S2_Eikonal_Weight_Study**: Eikonal weight study for Rigid Rotation benchmark
@@ -342,7 +349,9 @@ pinn-level-set/
 ├── assets/
 │   ├── fig_RV_GA_tT2.png
 │   ├── fig_RV_GA_tT8.png
-│   └── fig_ZD_GA_tT.png
+│   ├── fig_ZD_GA_tT.png
+│   ├── fig_ZD_S3_GA_tT.png
+│   └── fig_ZD_S4_GA_tT.png
 ├── requirements.txt
 ├── README.md
 └── LICENSE
@@ -419,12 +428,14 @@ If you use this work, please cite:
 
 ```bibtex
 @article{akbar2026mlst,
-   author  = {Muhammad Akbar Khan and Fahim Raees},
-   title   = {A Systematic Study of Physics-Informed Neural Networks
+   author   = {Muhammad Akbar Khan and Fahim Raees},
+   title    = {A Systematic Study of Physics-Informed Neural Networks
                    for the Level-Set Interface Advection},
-   journal = {Machine Learning: Science and Technology},
-   year    = {2026},
-   note    = {Under review. Manuscript ID: MLST-105622.
+   journal  = {Machine Learning: Science and Technology},
+   year     = {2026},
+   doi      = {10.1088/2632-2153/ae8b74},
+   url      = {https://iopscience.iop.org/article/10.1088/2632-2153/ae8b74},
+   note     = {Published. Gold Open Access, CC BY 4.0.
                    First author ORCID: 0009-0001-7956-0080}
 }
 
@@ -443,7 +454,7 @@ If you use this work, please cite:
 
 **Muhammad Akbar Khan**
 MS Applied Mathematics, NED University of Engineering & Technology
-Research Interests: Scientific Machine Learning · PINNs · Numerical PDEs · Neural Operators
+Research Interests: Scientific Machine Learning · PINNs · Numerical PDEs · Neural Operators · Computational Heat Transfer
 
 akbar.bsma1337@gmail.com · [GitHub](https://github.com/AkbarTheAnalyst) · [ORCID 0009-0001-7956-0080](https://orcid.org/0009-0001-7956-0080) · [Website](https://akbarkhan.dev) · [LinkedIn](https://linkedin.com/in/muhammad-akbar-khan-826129204)
 
